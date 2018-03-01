@@ -1,0 +1,11 @@
+scikit-image
+tensorflow
+matplotlib
+tensorflow
+numpy
+pandas
+sklearn
+scipy
+jupyter
+bs4
+selenium
