@@ -30,14 +30,15 @@ def check_flights():
     options = webdriver.ChromeOptions()
     options.add_argument('headless')
     options.add_argument('window-size=1200x600')
+    options.add_argument("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36")
 
     driver = webdriver.Chrome(chrome_options=options)
     # dcap = dict(DesiredCapabilities.PHANTOMJS)
     # dcap["phantomjs.page.settings.userAgent"] = ("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36")
     
-    url ="https://www.google.co.in/flights/explore/#explore;f=JFK,EWR,LGA;t=r-Europe-0x46ed8886cfadda85%253A0x72ef99e6b3fcf079;li=8;lx=12;d=2016-11-29"
+    url ="https://www.google.com/flights/explore/#explore;f=JFK,EWR,LGA;t=r-Europe-0x46ed8886cfadda85%253A0x72ef99e6b3fcf079;li=10;lx=14;d=2018-03-12"
     driver.get(url)
-    # driver.save_screenshot('flight_explorer.png')
+    driver.save_screenshot('flight_explorer.png')
     # wait = WebDriverWait(driver, 20)
     # wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'span.LH3SCIC-v-c')))
 
