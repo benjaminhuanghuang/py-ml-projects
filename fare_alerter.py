@@ -9,6 +9,7 @@ import numpy as np
 
 from selenium import webdriver
 
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -32,17 +33,28 @@ def check_flights():
     # dcap["phantomjs.page.settings.userAgent"] = ("Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36")
 
     url = "https://www.google.com/flights/explore/#explore;f=JFK,EWR,LGA;t=r-Europe-0x46ed8886cfadda85%253A0x72ef99e6b3fcf079;li=10;lx=14;d=2018-03-12"
+    driver.implicitly_wait(20)
     driver.get(url)
-    driver.save_screenshot('flight_explorer.png')
+
     # wait = WebDriverWait(driver, 20)
     # wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'span.LH3SCIC-v-c')))
 
+    # driver.save_screenshot('flight_explorer.png')
     bs = BeautifulSoup(driver.page_source, "lxml")
-    best_price_tags = bs.findAll('span', 'CTPFVNB-v-k')
+    # print(driver.page_source)
+    best_price_tags = bs.findAll('span', {'class': 'CTPFVNB-v-k'})
+
+    print(best_price_tags)
 
     # check if scrape worked  - alert ifit fails and shutdown
     if len(best_price_tags) < 4:
         print('Failed to load page data')
+
+    best_prices = []
+    for tag in best_price_tags:
+        best_prices.append(int(tag.text.replace('$','').repalace(',','')))
+
+    print(best_prices)
 
 
 if __name__ == '__main__':
