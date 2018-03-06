@@ -34,5 +34,16 @@ So PhantomJS should be replaced with chrome driver. To fix error
 ```
 selenium.common.exceptions.WebDriverException: Message: ‘chromedriver’ executable needs to be in PATH.
 ```
-We should download chromedriver at https://sites.google.com/a/chromium.org/chromedriver/downloads, when put it into 
+ChromeDriver is the little bit of glue that allows Selenium to send commands to Chrome and automate it. 
+If you are on a Mac, to install it like 
+```
+brew install chromedriver
+```
+Or download chromedriver at https://sites.google.com/a/chromium.org/chromedriver/downloads, when put it into 
 virtual environment/bin
+
+
+## Trouble shooting
+```
+Explore Flight has not been optimized for your browser. For best results, please try Chrome, Firefox 3.5+, Internet Explorer 8+, Safari 4+. 
+```
