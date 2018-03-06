@@ -21,10 +21,11 @@ import matplotlib.pyplot as plt
 
 def check_flights():
     options = webdriver.ChromeOptions()
-    options.add_argument('headless')
+    # options.add_argument('headless')    # cause error "Explore Flight has not been optimized for your browser"
     options.add_argument('window-size=1200x600')
-    # options.add_argument(
-    #     "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36")
+    # google what is my user anent
+    options.add_argument(
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36")
 
     driver = webdriver.Chrome(chrome_options=options)
     # dcap = dict(DesiredCapabilities.PHANTOMJS)
@@ -36,12 +37,12 @@ def check_flights():
     # wait = WebDriverWait(driver, 20)
     # wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, 'span.LH3SCIC-v-c')))
 
-    # s = BeautifulSoup(driver.page_source, "lxml")
-    # best_price_tags = s.findAll('div', 'LH3SCIC-w-e')
+    bs = BeautifulSoup(driver.page_source, "lxml")
+    best_price_tags = bs.findAll('span', 'CTPFVNB-v-k')
 
     # check if scrape worked  - alert ifit fails and shutdown
-    # if len(best_price_tags) < 4:
-    #     print('Failed to load page data')
+    if len(best_price_tags) < 4:
+        print('Failed to load page data')
 
 
 if __name__ == '__main__':
